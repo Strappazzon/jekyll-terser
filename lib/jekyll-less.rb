@@ -7,6 +7,9 @@ module Jekyll
     class LessCssFile < Jekyll::StaticFile
       attr_accessor :compress
 
+      # This should fix 'Error:  uninitialized class variable @@mtimes in Jekyll::Less::LessCssFile'
+      @@mtimes = {}
+
       # Obtain destination path.
       #   +dest+ is the String path to the destination dir
       #
