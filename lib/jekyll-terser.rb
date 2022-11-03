@@ -5,7 +5,6 @@ module Jekyll
   module Terser
 
     class JSFile < Jekyll::StaticFile
-      attr_accessor :compress
 
       @@mtimes = {}
 
@@ -30,7 +29,7 @@ module Jekyll
         FileUtils.mkdir_p(File.dirname(dest_path))
         begin
           content = File.read(path)
-          content = ::Terser.compile(content) :compress => compress
+          content = ::Terser.compile(content)
           File.open(dest_path, 'w') do |f|
             f.write(content)
           end
@@ -48,7 +47,7 @@ module Jekyll
 
       # Initialize options from site config.
       def initialize(config = {})
-        @options = config["terser"] ||= {"compress" => true}
+        @options = config["terser"]
       end
 
       # Jekyll will have already added the *.js files as Jekyll::StaticFile
@@ -62,7 +61,6 @@ module Jekyll
             destination = File.dirname(sf.path).sub(site.source, '')
 
             js_file = JSFile.new(site, site.source, destination, name)
-            js_file.compress = @options["compress"]
             site.static_files << js_file
           end
         end
