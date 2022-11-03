@@ -55,7 +55,7 @@ module Jekyll
       # JSFile object.
       def generate(site)
         site.static_files.clone.each do |sf|
-          if sf.kind_of?(Jekyll::StaticFile) && sf.path =~ /\.js$/ && sf.path =~ /\.min.js$/
+          if sf.kind_of?(Jekyll::StaticFile) && sf.path =~ /\.js$/
             site.static_files.delete(sf)
             name = File.basename(sf.path)
             destination = File.dirname(sf.path).sub(site.source, '')
