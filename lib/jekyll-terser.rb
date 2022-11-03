@@ -29,7 +29,7 @@ module Jekyll
         FileUtils.mkdir_p(File.dirname(dest_path))
         begin
           content = File.read(path)
-          content = ::Terser.compile(content)
+          content = ::Terser.new.compile(content)
           File.open(dest_path, 'w') do |f|
             f.write(content)
           end
