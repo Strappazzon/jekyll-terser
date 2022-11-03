@@ -1,13 +1,12 @@
-require "jekyll-less/version"
-require 'less'
+require "jekyll-terser/version"
+require 'terser'
 
 module Jekyll
-  module Less
+  module Terser
 
-    class LessCssFile < Jekyll::StaticFile
+    class JSFile < Jekyll::StaticFile
       attr_accessor :compress
 
-      # This should fix 'Error:  uninitialized class variable @@mtimes in Jekyll::Less::LessCssFile'
       @@mtimes = {}
 
       # Obtain destination path.
@@ -15,10 +14,10 @@ module Jekyll
       #
       # Returns destination file path.
       def destination(dest)
-        File.join(dest, @dir, @name.sub(/less$/, 'css'))
+        File.join(dest, @dir, @name)
       end
 
-      # Convert the less file into a css file.
+      # Process the .js file
       #   +dest+ is the String path to the destination dir
       #
       # Returns false if the file was not modified since last time (no-op).
@@ -31,12 +30,12 @@ module Jekyll
         FileUtils.mkdir_p(File.dirname(dest_path))
         begin
           content = File.read(path)
-          content = ::Less::Parser.new({:paths => [File.dirname(path)]}).parse(content).to_css :compress => compress
+          content = ::Terser.compile(content) :compress => compress
           File.open(dest_path, 'w') do |f|
             f.write(content)
           end
         rescue => e
-          STDERR.puts "Less Exception: #{e.message}"
+          STDERR.puts "Terser Exception: #{e.message}"
         end
 
         true
@@ -44,27 +43,27 @@ module Jekyll
 
     end
 
-    class LessCssGenerator < Jekyll::Generator
+    class TerserGenerator < Jekyll::Generator
       safe true
 
       # Initialize options from site config.
       def initialize(config = {})
-        @options = config["less"] ||= {"compress" => true}
+        @options = config["terser"] ||= {"compress" => true}
       end
 
-      # Jekyll will have already added the *.less files as Jekyll::StaticFile
+      # Jekyll will have already added the *.js files as Jekyll::StaticFile
       # objects to the static_files array.  Here we replace those with a
-      # LessCssFile object.
+      # JSFile object.
       def generate(site)
         site.static_files.clone.each do |sf|
-          if sf.kind_of?(Jekyll::StaticFile) && sf.path =~ /\.less$/
+          if sf.kind_of?(Jekyll::StaticFile) && sf.path =~ /\.js$/ && sf.path =~ /\.min.js$/
             site.static_files.delete(sf)
             name = File.basename(sf.path)
             destination = File.dirname(sf.path).sub(site.source, '')
 
-            less_file = LessCssFile.new(site, site.source, destination, name)
-            less_file.compress = @options["compress"]
-            site.static_files << less_file
+            js_file = JSFile.new(site, site.source, destination, name)
+            js_file.compress = @options["compress"]
+            site.static_files << js_file
           end
         end
       end

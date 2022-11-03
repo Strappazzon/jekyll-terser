@@ -1,34 +1,30 @@
-Less for Jekyll
+Terser for Jekyll
 ===============
 
-This gem provides a [Jekyll](http://github.com/mojombo/jekyll) converter for
-[Less CSS](http://lesscss.org/) files.
+This gem provides a [Jekyll](http://github.com/mojombo/jekyll) converter for [Terser](https://github.com/terser/terser).
 
 Basic Setup
 -----------
 Install the gem:
 
-    [sudo] gem install jekyll-less
+    [sudo] gem install jekyll-terser
 
 In a plugin file within your Jekyll project's _plugins directory:
 
     # _plugins/my-plugin.rb
-    require "jekyll-less"
+    require "jekyll-terser"
 
 Alternatively, add a configuration option in `_config.yml`:
 
-    gems: ['jekyll-less']
+    gems: ['jekyll-terser']
 
-Place .less files anywhere in your Jekyll project's directory.  These will be
-converted to .css files with the same directory path and filename. For example,
-if you create a Less file at _css/my-stuff/styles.less_, then the corresponding
-css file would end up at _css/my-stuff/styles.css_.
+.js files anywhere in your Jekyll project's directory will be processed.
 
 Bundler Setup
 -------------
 Already using bundler to manage gems for your Jekyll project?  Then just add
 
-    gem "jekyll-less"
+    gem "jekyll-terser"
 
 to your gemfile and create the following plugin in your projects _plugins
 directory.  I've called mine bundler.rb.  This will automatically require all
@@ -41,5 +37,8 @@ of the gems specified in your Gemfile.
 
 Credit
 ------
-This gem was originally based on this [gist](https://gist.github.com/760265) by
+
+Leverages [terser-ruby](https://github.com/ahorek/terser-ruby) ruby Terser wrapper by [ahorek](https://github.com/ahorek)
+
+Based on [jekyll-less](https://github.com/zroger/jekyll-less) by [zroger](https://github.com/zroger), originally based on this [gist](https://gist.github.com/760265) by
 [joshbrown](https://github.com/joshbrown).
