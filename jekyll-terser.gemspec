@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.name        = "jekyll-terser"
   s.version     = Jekyll::Terser::VERSION
   s.authors     = ["Roberto Beltran"]
-  s.email       = ["robertobeltran@pm.me"]
+  s.email       = ["contact@robertobeltran.codes"]
   s.homepage    = "https://github.com/RobertoJBeltran/jekyll-terser"
   s.summary     = %q{Terser for Jekyll}
   s.description = %q{Minify, Uglify and Mangle javascript with Terser}

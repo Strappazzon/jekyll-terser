@@ -16,5 +16,5 @@ Credit
 
 Leverages [terser-ruby](https://github.com/ahorek/terser-ruby) ruby Terser wrapper by [ahorek](https://github.com/ahorek)
 
-Based on [jekyll-less](https://github.com/zroger/jekyll-less) by [zroger](https://github.com/zroger), originally based on this [gist](https://gist.github.com/760265) by
+Based on [jekyll-less](https://github.com/zroger/jekyll-less) by [zroger](https://github.com/zroger), originally based on a gist by
 [joshbrown](https://github.com/joshbrown).
