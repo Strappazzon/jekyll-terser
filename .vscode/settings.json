@@ -1,0 +1,83 @@
+{
+	"[json][jsonc]": {
+		"editor.formatOnPaste": true,
+		"editor.formatOnSave": true,
+		"editor.insertSpaces": false,
+		"editor.tabSize": 4
+	},
+	"[markdown]": {
+		"editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
+		"editor.insertSpaces": true,
+		"editor.quickSuggestions": {
+			"other": "off"
+		},
+		"editor.tabSize": 2,
+		"files.trimTrailingWhitespace": false
+	},
+	"[plaintext][txt]": {
+		"editor.insertSpaces": true,
+		"editor.tabSize": 2,
+		"files.insertFinalNewline": false,
+		"files.trimTrailingWhitespace": false
+	},
+	"[ruby]": {
+		"editor.defaultFormatter": "Shopify.ruby-lsp",
+		"editor.insertSpaces": true,
+		"editor.rulers": [
+			160
+		],
+		"editor.tabSize": 2,
+		"files.eol": "\n"
+	},
+	"[scminput]": {
+		"editor.rulers": [
+			70
+		]
+	},
+	"[shellscript]": {
+		"editor.insertSpaces": true,
+		"editor.tabSize": 2,
+		"files.eol": "\n"
+	},
+	"[yaml]": {
+		"editor.insertSpaces": true,
+		"editor.tabSize": 2
+	},
+	"editor.defaultFormatter": null,
+	"editor.detectIndentation": false,
+	"editor.rulers": [],
+	"explorer.fileNesting.enabled": true,
+	"explorer.fileNesting.patterns": {
+		"*.gemspec": "Gemfile*"
+	},
+	"files.exclude": {
+		"**/.ruby-lsp": true
+	},
+	"files.insertFinalNewline": true,
+	"files.readonlyInclude": {
+		".ruby-lsp/**/*": true,
+		"**/Gemfile.lock": true,
+		"**/LICENSE*": true
+	},
+	"files.trimFinalNewlines": true,
+	"files.trimTrailingWhitespace": true,
+	"git.inputValidation": true,
+	"git.inputValidationLength": 70,
+	"git.inputValidationSubjectLength": 70,
+	"markdown.validate.enabled": false,
+	"rubyLsp.formatter": "rubocop",
+	"search.exclude": {
+		"**/.ruby-lsp": true,
+		"*.swp": true
+	},
+	"terminal.integrated.defaultProfile.windows": "WSL",
+	"terminal.integrated.profiles.windows": {
+		"WSL": {
+			"icon": "terminal-linux",
+			"path": "${env:windir}\\system32\\wsl.exe"
+		}
+	},
+	"yaml.schemas": {
+		"https://json.schemastore.org/github-issue-config.json": ".github/ISSUE_TEMPLATE/config.yml"
+	}
+}
