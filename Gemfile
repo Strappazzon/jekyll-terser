@@ -1,4 +1,7 @@
-source "http://rubygems.org"
+source 'https://rubygems.org'
 
-# Specify your gem's dependencies in jekyll-terser.gemspec
 gemspec
+
+# Development dependencies
+gem 'bundler', '~> 2.4'
+gem 'rubocop', '~> 1.73.0'

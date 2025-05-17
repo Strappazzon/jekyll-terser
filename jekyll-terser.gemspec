@@ -1,23 +1,20 @@
-# -*- encoding: utf-8 -*-
-$:.push File.expand_path("../lib", __FILE__)
-require "jekyll-terser/version"
+Gem::Specification.new do |spec|
+  spec.name          = 'jekyll-terser'
+  spec.version       = '1.0.0'
+  spec.authors       = ['Alberto Strappazzon']
+  spec.summary       = 'Jekyll support for Terser.'
+  spec.description   = 'Jekyll support for Terser: compress and mangle JS files.'
+  spec.license       = 'MIT'
 
-Gem::Specification.new do |s|
-  s.name        = "jekyll-terser"
-  s.version     = Jekyll::Terser::VERSION
-  s.authors     = ["Roberto Beltran"]
-  s.email       = ["contact@robertobeltran.codes"]
-  s.homepage    = "https://github.com/RobertoJBeltran/jekyll-terser"
-  s.summary     = %q{Terser for Jekyll}
-  s.description = %q{Minify, Uglify and Mangle javascript with Terser}
+  raise 'RubyGems 2.0 or newer is required.' unless spec.respond_to?(:metadata)
 
-  s.rubyforge_project = "jekyll-terser"
+  spec.metadata['source_code_uri'] = 'https://github.com/Strappazzon/jekyll-terser'
+  spec.metadata['changelog_uri']   = 'https://github.com/Strappazzon/jekyll-terser/blob/master/CHANGELOG.md'
 
-  s.files         = `git ls-files`.split("\n")
-  s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
-  s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
-  s.require_paths = ["lib"]
+  spec.files                 = [*Dir['lib/**/*.rb'], 'LICENSE.txt']
+  spec.require_paths         = ['lib']
+  spec.required_ruby_version = '>= 3.4.2'
 
-  s.add_runtime_dependency('jekyll', [">= 0.10.0"])
-  s.add_runtime_dependency('terser', [">= 1.0.0"])
+  spec.add_dependency 'jekyll', '~> 4.4'
+  spec.add_dependency 'terser', '~> 1.2'
 end
