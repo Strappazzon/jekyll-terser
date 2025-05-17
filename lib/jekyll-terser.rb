@@ -23,7 +23,7 @@ module Jekyll
         @base   = base
         @dir    = dir
         @name   = name
-        options = site.config['terser'] || {} if terser.nil?
+        options = site.config.dig('jekyll-terser', 'terser_opts') || {} if terser.nil?
         @terser = terser || ::Terser.new(options.transform_keys(&:to_sym))
       end
 
@@ -57,7 +57,7 @@ module Jekyll
       def initialize(config = {})
         super
 
-        @options = config['terser'] || {}
+        @options = config.dig('jekyll-terser', 'terser_opts') || {}
         @terser = ::Terser.new(@options.transform_keys(&:to_sym))
       end
 
