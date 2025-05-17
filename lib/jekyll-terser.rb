@@ -62,6 +62,8 @@ module Jekyll
       end
 
       def generate(site)
+        return unless !site.config.dig('jekyll-terser', 'only_production') || Jekyll.env == 'production'
+
         site.static_files.clone.each do |f|
           next unless f.is_a?(Jekyll::StaticFile) && f.path.match?(/\.js$/) && !f.path.end_with?('.min.js')
 
