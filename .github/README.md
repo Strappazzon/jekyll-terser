@@ -28,3 +28,27 @@ gem 'jekyll-terser', git: 'https://github.com/Strappazzon/jekyll-terser.git', ta
 ```
 
 Then execute `bundle install` to install the Gem.
+
+## Getting Started
+
+No additional steps are required.
+All JS files inside the destination directory are overwritten with the output of Terser.
+
+You can also specify the options inside your configuration:
+
+```yaml
+jekyll-terser:
+  terser_opts:
+    compress: {}
+    mangle: {}
+    parse: {}
+```
+
+All available options are available on [Terser Docs](https://terser.org/docs/options/).
+
+You can also specify that Terser should only work in production mode:
+
+```yaml
+jekyll-terser:
+  only_production: true
+```
