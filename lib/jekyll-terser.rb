@@ -37,7 +37,6 @@ module Jekyll
         return false if File.exist?(dest_path) && !modified?
 
         ModTime.mtimes[path] = mtime
-
         FileUtils.mkdir_p(File.dirname(dest_path))
 
         begin
@@ -58,7 +57,7 @@ module Jekyll
         super
 
         @options = config.dig('jekyll-terser', 'terser_opts') || {}
-        @terser = ::Terser.new(@options.transform_keys(&:to_sym))
+        @terser  = ::Terser.new(@options.transform_keys(&:to_sym))
       end
 
       def generate(site)
